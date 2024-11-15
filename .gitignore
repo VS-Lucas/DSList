@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+HELP.md:Zone.Identifier 
+mvnw.cmd:Zone.Identifier
+mvnw:Zone.Identifier
+pom.xml:Zone.Identifier
+.gitattributes:Zone.Identifier
+HELP.md:Zone.Identifier
