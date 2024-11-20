@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.lucasprojetos.dslist.response.BuildResponse;
 import com.lucasprojetos.dslist.response.Response;
 
-
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -18,11 +17,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({GameNotFoundException.class})
     public ResponseEntity<Response<String>> handleGameNotFoundException(GameNotFoundException exception) {
-        return buildResponse.build("error", exception.getMessage(), null, HttpStatus.NOT_FOUND);        
+        return buildResponse.build("error", exception.getMessage(), HttpStatus.NOT_FOUND);        
     }
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<Response<String>> handleRuntimeException(RuntimeException exception) {
-        return buildResponse.build("error", "Internal Server Error", null, HttpStatus.INTERNAL_SERVER_ERROR);  
+        return buildResponse.build("error", "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);  
     }
 }
