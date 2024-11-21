@@ -8,4 +8,5 @@ import com.lucasprojetos.dslist.dto.GameMinDTO;
 public interface GameService {
     public GameDTO findById(Long id);
     public List<GameMinDTO> findAll();
+    public List<GameMinDTO> findByListId(Long listId);
 }

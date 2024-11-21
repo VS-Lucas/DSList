@@ -10,6 +10,7 @@ import com.lucasprojetos.dslist.dto.GameDTO;
 import com.lucasprojetos.dslist.dto.GameMinDTO;
 import com.lucasprojetos.dslist.entities.Game;
 import com.lucasprojetos.dslist.exceptions.GameNotFoundException;
+import com.lucasprojetos.dslist.projections.GameMinProjection;
 import com.lucasprojetos.dslist.repositories.GameRepository;
 import com.lucasprojetos.dslist.services.GameService;
 
@@ -31,6 +32,18 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<GameMinDTO> findAll() {
         List<Game> games = gameRepository.findAll();
+        return games.stream().map(game -> new GameMinDTO(game)).toList();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<GameMinDTO> findByListId(Long listId) {
+        List<GameMinProjection> games = gameRepository.findByListId(listId);
+
+        if (games.isEmpty()) {
+            throw new GameNotFoundException(String.format("No games found for list id %d", listId));
+        }
+
         return games.stream().map(game -> new GameMinDTO(game)).toList();
     }
 }
