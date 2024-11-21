@@ -20,6 +20,11 @@ public class GlobalExceptionHandler {
         return buildResponse.build("error", exception.getMessage(), HttpStatus.NOT_FOUND);        
     }
 
+    @ExceptionHandler({GameListNotFoundException.class})
+    public ResponseEntity<Response<String>> handleGameListNotFoundException(GameListNotFoundException exception) {
+        return buildResponse.build("error", exception.getMessage(), HttpStatus.NOT_FOUND);        
+    }
+
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<Response<String>> handleRuntimeException(RuntimeException exception) {
         return buildResponse.build("error", "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);  
