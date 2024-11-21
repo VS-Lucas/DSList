@@ -36,7 +36,7 @@ public class GameController {
     @GetMapping
     public ResponseEntity<Response<List<GameMinDTO>>> findAll() {
         List<GameMinDTO> games = gameService.findAll();
-        
+
         return buildResponse.build("success", "Games found", games, HttpStatus.OK);
     }
 }
